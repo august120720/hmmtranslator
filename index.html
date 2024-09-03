@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>hmmtranslator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        font-family: "Space Grotesk", sans-serif;
+        box-sizing: border-box;
+      }
+      .header-image {
+        height: 100vh;
+        width: 30%;
+        object-fit: cover;
+      }
+      .topcontainer {
+        background-color: white;
+        position: absolute;
+        right: 32px;
+        top: 80px;
+        font-size: 24px;
+      }
+      .menu-link {
+        color: black;
+        margin-left: 16px;
+      }
+      .menu-link:hover {
+        text-decoration: wavy;
+      }
+
+      .logo {
+        position: absolute;
+        left: 32px;
+        top: 16px;
+        max-width: 300px;
+      }
+      .hr {
+        width: 60%;
+        height: 1px;
+        background-color: black;
+      }
+      .Kapitel {
+        position: absolute;
+        top: 20%;
+        left: 32px;
+        right: 32px;
+        height: auto;
+        width: 100%;
+      }
+      .text {
+        width: 700px;
+      }
+      .mc {
+        background: #dad5d5;
+        width: 60%;
+        max-width: 600px;
+        margin: 50px auto 0;
+        border-radius: 10px;
+        padding: 30px;
+      }
+      .mc h1 {
+        font-size: 25px;
+        color: black;
+        font-weight: 600;
+        border-bottom: 1px solid;
+        padding-bottom: 30px;
+      }
+      .quiz {
+        padding: 20px 0;
+      }
+      .quiz h2 {
+        font-size: 18px;
+        color: black;
+        font-weight: 600;
+      }
+      .ansbutton {
+        background: #fff;
+        color: #222;
+        font-weight: 500;
+        width: 100%;
+        border: 1px solid #222;
+        padding: 10px;
+        margin: 10px 0;
+        text-align: left;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .ansbutton:hover:not([disabled]) {
+        background: #222;
+        color: #fff;
+      }
+      .ansbutton:disabled {
+        cursor: no-drop;
+      }
+      #shufflebutton {
+        background: #fff;
+        color: #222;
+        font-weight: 500;
+        width: 150px;
+        border: 0;
+        padding: 10px;
+        margin: 20px auto 0;
+        border-radius: 4px;
+        cursor: pointer;
+        display: none;
+      }
+      .correct {
+        background: #9aeabc;
+      }
+      .incorrect {
+        background: #ff9393;
+      }
+      .audiobutton {
+        width: 35px;
+        height: 35px;
+        background-color: #c61616;
+        border-radius: 100%;
+        border: #8b7f7f solid 2px;
+        position: relative;
+      }
+      .audiobutton.mc {
+        top: 80px;
+        right: 80px;
+      }
+
+      .audiobutton::before {
+        position: absolute;
+        content: "";
+        border-top: transparent 10px solid;
+        border-bottom: transparent 10px solid;
+        border-left: #fff 16.6px solid;
+        top: 50%;
+        left: 50%;
+        transform: translate(-40%, -50%);
+      }
+      .audiobutton::after {
+        position: absolute;
+        content: "";
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: #fff solid 2px;
+        border-radius: 100%;
+      }
+      @keyframes shadowPulse {
+        0% {
+          box-shadow: 0 0 8px 6px transparent, 0 0 0 0 transparent,
+            0 0 8px 6px transparent;
+        }
+        10% {
+          box-shadow: 0 0 8px 6px #c61616, 0 0 12px 10px transparent,
+            0 0 12px 5px #c61616;
+        }
+        80%,
+        100% {
+          box-shadow: 0 0 8px 6px transparent, 0 0 0 40px transparent,
+            0 0 0 40px transparent;
+        }
+      }
+      @keyframes ringPulse {
+        0% {
+          opacity: 0;
+          transform: scale(0.95);
+        }
+        10% {
+          opacity: 1;
+        }
+        80%,
+        100% {
+          opacity: 0;
+          transform: scale(2);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <script>
+      function clickhmtest(audioid) {
+        var sound = new Audio(srcs[audioid]);
+        sound.play();
+      }
+    </script>
+    <div class="topcontainer">
+      <a class="menu-link" href="#lexikon">Lexikon</a>
+      <a class="menu-link" href="#test">Test</a>
+    </div>
+
+    <img src="Bilder/logo.png" class="logo" />
+    <div class="Kapitel">
+      <h2>Beschreibung</h2>
+      <div class="text">
+        <p>
+          Fühlst du dich mal wieder total im Dunklen gelassen, wenn August dir
+          nur mit einem „hmm“ auf deine Frage antwortet?
+        </p>
+        <p>
+          Ist es dir nicht möglich irgendeinen Sinn in diesem kurzen, jedoch
+          prägnanten, Wortlaut zu entdecken? Nein?
+        </p>
+        <p>
+          Dann bist du hier genau richtig, denn ich habe beschlossen hier die
+          perfekte Lernplattform zu schaffen, August`s scheinbar einzigen
+          Wortschatz besser zu verstehen. Viel Spaß beim Erlernen dieser
+          hochkomplexen und nicht wirklich schönen Sprache.
+        </p>
+      </div>
+      <hr class="hr" />
+      <h2 id="lexikon">Lexikon</h2>
+      <div class="text">
+        <p>
+          Im folgenden findet sich eine leider noch nicht komplette aber stetig
+          wachsende Datenbank an hmm’s. Es ist jeweils eine audiodatei und
+          dessen Bedeutung einzusehen.
+        </p>
+      </div>
+      <div class="listeaudios">
+        <table>
+          <tr>
+            <th>Audio:</th>
+            <th>tieferer Sinn:</th>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(0);"
+                ></button>
+              </div>
+            </td>
+            <td>"Ah alles klar verstehe"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(1);"
+                ></button>
+              </div>
+            </td>
+            <td>"Erstaunlich/Beeindruckend"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(2);"
+                ></button>
+              </div>
+            </td>
+            <td>"Ja genau so mein ich das"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(3);"
+                ></button>
+              </div>
+            </td>
+            <td>"ja genau(sarkasmus)"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(4);"
+                ></button>
+              </div>
+            </td>
+            <td>"Ach naja geht so/Nicht beeindruckt"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(5);"
+                ></button>
+              </div>
+            </td>
+            <td>"schmeckt gut"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(6);"
+                ></button>
+              </div>
+            </td>
+            <td>"mega/fetzig"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(7);"
+                ></button>
+              </div>
+            </td>
+            <td>"Selbstbewusst/wohl wissend etwas gut gemacht zu haben"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(8);"
+                ></button>
+              </div>
+            </td>
+            <td>"nachdenklich/die Antwort braucht noch ein bisschen"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(9);"
+                ></button>
+              </div>
+            </td>
+            <td>"zustimmend"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(10);"
+                ></button>
+              </div>
+            </td>
+            <td>"gelangweilt"</td>
+          </tr>
+          <tr>
+            <td>
+              <div>
+                <button
+                  class="audiobutton"
+                  ,
+                  onclick="clickhmtest(11);"
+                ></button>
+              </div>
+            </td>
+            <td>"entäuscht"</td>
+          </tr>
+        </table>
+      </div>
+
+      <hr class="hr" />
+      <h2 id="test">Test</h2>
+      <div class="text">
+        <p>
+          Wenn du es bis hier geschafft hast scheinst du es ja echt ernst zu
+          meinen...
+        </p>
+        <p>
+          Deshalb hast du hier nochmal die Möglichkeit dein Wortschatz
+          aufzufrischen. Viel Erfolg und Durchhaltevermögen beim Lernen hehe:
+        </p>
+      </div>
+
+      <div class="mc">
+        <h1>hmm-Trainer</h1>
+        <div class="quiz">
+          <div class="question-container">
+            <h2 id="question">Was bedeutet das folgende hmm:</h2>
+            <button id="audiobutton" class="audiobutton"></button>
+          </div>
+          <audio id="audio-player"></audio>
+          <div id="answer-buttons"></div>
+          <button id="shufflebutton">Nächstes Hmm</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function StelleFrage() {
+        let x =
+          numberofaudios[Math.floor(Math.random() * numberofaudios.length)];
+        let richtigeantwort = antworten[x];
+        let id = ids[x];
+        let src = srcs[x];
+        let crraudios = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+        let corraudios1 = crraudios.filter((item) => item !== x);
+        let y = corraudios1[Math.floor(Math.random() * corraudios1.length)];
+        let falscheantwort1 = antworten[y];
+
+        let corraudios2 = corraudios1.filter((item) => item !== y);
+        let z = corraudios2[Math.floor(Math.random() * corraudios2.length)];
+        let falscheantwort2 = antworten[z];
+
+        let corraudios3 = corraudios2.filter((item) => item !== z);
+        let w = corraudios3[Math.floor(Math.random() * corraudios3.length)];
+        let falscheantwort3 = antworten[w];
+
+        let quizfragenungemischt = [
+          { text: richtigeantwort, correct: true },
+          { text: falscheantwort1, correct: false },
+          { text: falscheantwort2, correct: false },
+          { text: falscheantwort3, correct: false },
+        ];
+        let quizfragen = mischen(quizfragenungemischt);
+
+        resetState();
+        let currentQuestion = "Was bedeutet das folgende hmm: ";
+        questionElement.innerHTML = currentQuestion;
+        quizfragen.forEach((answer) => {
+          const button = document.createElement("button");
+          button.innerHTML = answer.text;
+          button.classList.add("ansbutton");
+          answerButtons.appendChild(button);
+          if (answer.correct) {
+            button.dataset.correct = answer.correct;
+          }
+          button.addEventListener("click", selectAnswer);
+        });
+
+        // Update Audio Player Source and Audio Button
+        audioPlayer.src = src;
+        audioPlayer.load();
+      }
+
+      const antworten = [
+        "Ah alles klar verstehe",
+        "Erstaunlich/Beeindruckend",
+        "Ja genau so mein ich das",
+        "ja genau(sarkasmus)",
+        "Ach naja geht so/Nicht beeindruckt",
+        "schmeckt gut",
+        "mega/fetzig",
+        "Selbstbewusst/wohl wissend etwas gut gemacht zu haben",
+        "nachdenklich/die Antwort braucht noch ein bisschen",
+        "zustimmend",
+        "gelangweilt",
+        "entäuscht",
+      ];
+      const ids = [
+        "0",
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9",
+        "10",
+        "11",
+      ];
+      const srcs = [
+        "Audiodateien/mp3/0.mp3",
+        "Audiodateien/mp3/1.mp3",
+        "Audiodateien/mp3/2.mp3",
+        "Audiodateien/mp3/3.mp3",
+        "Audiodateien/mp3/4.mp3",
+        "Audiodateien/mp3/5.mp3",
+        "Audiodateien/mp3/6.mp3",
+        "Audiodateien/mp3/7.mp3",
+        "Audiodateien/mp3/8.mp3",
+        "Audiodateien/mp3/9.mp3",
+        "Audiodateien/mp3/10.mp3",
+        "Audiodateien/mp3/11.mp3",
+      ];
+      const numberofaudios = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
+      function mischen(liste) {
+        let kopie = liste.slice();
+        for (let i = kopie.length - 1; i > 0; i--) {
+          let j = Math.floor(Math.random() * (i + 1));
+          [kopie[i], kopie[j]] = [kopie[j], kopie[i]];
+        }
+        return kopie;
+      }
+
+      const questionElement = document.getElementById("question");
+      const answerButtons = document.getElementById("answer-buttons");
+      const nextButton = document.getElementById("shufflebutton");
+      const audioPlayer = document.getElementById("audio-player");
+      const audioButton = document.getElementById("audiobutton");
+
+      function startQuiz() {
+        nextButton.innerHTML = "Nächstes Hmm";
+        StelleFrage();
+      }
+
+      function resetState() {
+        nextButton.style.display = "none";
+        while (answerButtons.firstChild) {
+          answerButtons.removeChild(answerButtons.firstChild);
+        }
+      }
+
+      function selectAnswer(e) {
+        const selectenBtn = e.target;
+        const isCorrect = selectenBtn.dataset.correct === "true";
+        if (isCorrect) {
+          selectenBtn.classList.add("correct");
+        } else {
+          selectenBtn.classList.add("incorrect");
+        }
+        Array.from(answerButtons.children).forEach((button) => {
+          if (button.dataset.correct === "true") {
+            button.classList.add("correct");
+          }
+          button.disabled = true;
+        });
+        nextButton.style.display = "block";
+      }
+
+      // Play the audio when the audio button is clicked
+      audioButton.addEventListener("click", () => {
+        audioPlayer.play();
+      });
+
+      nextButton.addEventListener("click", () => {
+        StelleFrage();
+      });
+      startQuiz();
+    </script>
+  </body>
+</html>
